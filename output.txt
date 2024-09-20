@@ -1,0 +1,9 @@
+id  first_name  last_name  email                    created_at         
+--  ----------  ---------  -----------------------  -------------------
+1   John        Doe        john.doe@example.com     2024-09-20 21:18:01
+2   Jane        Doe        jane.doe@example.com     2024-09-20 21:18:01
+3   Alice       Smith      alice.smith@example.com  2024-09-20 21:18:01
+4   Bob         Brown      bob.brown@example.com    2024-09-20 21:18:01
+user_count
+----------
+4         
