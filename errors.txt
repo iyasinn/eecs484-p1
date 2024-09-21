@@ -1,57 +1,74 @@
-SQL> @createTables.sql
-
-Table created.
-
-
-Table created.
+CREATE TABLE Users (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
 
 
-Trigger created.
+CREATE TABLE Friends (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
 
-    PRIMARY KEY(city_id),
+
+CREATE TRIGGER Order_Friend_Pairs
                *
-ERROR at line 6:
-ORA-00907: missing right parenthesis
+ERROR at line 1:
+ORA-04081: trigger 'ORDER_FRIEND_PAIRS' already exists
 
 
-    FOREIGN KEY (current_city_id) REFERENCES Cities(city_id) ON DELETE CASCADE
-                                             *
-ERROR at line 6:
-ORA-00942: table or view does not exist
+CREATE TABLE Cities (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
 
 
-    FOREIGN KEY (current_city_id) REFERENCES Cities(city_id) ON DELETE CASCADE
-                                             *
-ERROR at line 6:
-ORA-00942: table or view does not exist
+CREATE TABLE User_Current_Cities (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
 
 
-
-Table created.
-
-
-Table created.
-
-    PRIMARY_KEY (user_id, program_id),
-                *
-ERROR at line 5:
-ORA-00902: invalid datatype
+CREATE TABLE User_Hometown_Cities (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
 
 
-    FOREIGN KEY (event_city_id) REFERENCES Cities(city_id) ON DELETE CASCADE
-                                           *
-ERROR at line 16:
-ORA-00942: table or view does not exist
+CREATE TABLE Messages (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
 
 
-    FOREIGN KEY (event_id) REFERENCES User_Events(event_id) ON DELETE CASCADE,
-                                      *
-ERROR at line 7:
-ORA-00942: table or view does not exist
+CREATE TABLE Programs (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
 
 
+CREATE TABLE Education (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
 
-Table created.
+
+CREATE TABLE User_Events (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+CREATE TABLE Participants (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+CREATE TABLE Albums (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
 
 )
 *

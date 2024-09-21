@@ -131,12 +131,13 @@ CREATE TABLE Albums (
 );
 
 CREATE TABLE Photos (
-    photo_id INTEGER PRIMARY KEY, 
+    photo_id INTEGER NOT NULL, 
     album_id INTEGER NOT NULL, 
     photo_caption VARCHAR2(2000), 
     photo_created_time TIMESTAMP NOT NULL, 
     photo_modified_time TIMESTAMP, 
     photo_link VARCHAR2(2000) NOT NULL,
+    PRIMARY KEY (photo_id)
 );
 
 ALTER TABLE Albums 
