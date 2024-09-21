@@ -2,10 +2,10 @@
 DROP TABLE Tags;
 
 -- Drop the Photos table
-DROP TABLE Photos;
+DROP TABLE Photos CASCADE CONSTRAINTS;
 
 -- Drop the Albums table
-DROP TABLE Albums;
+DROP TABLE Albums CASCADE CONSTRAINTS;
 
 -- Drop the Participants table
 DROP TABLE Participants;
