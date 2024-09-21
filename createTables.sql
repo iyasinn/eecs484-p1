@@ -9,6 +9,7 @@ CREATE TABLE Users (
     gender VARCHAR2(100),
     PRIMARY KEY (user_id), 
     ON DELETE CASCADE
+    -- Referenced by a lot of stuff
 );
 
 -- TODO: Need to add the Friends Trigger so that (a, b) and (b, a) can't be inserted
@@ -30,7 +31,7 @@ CREATE TABLE Cities (
     PRIMARY KEY(city_id),
     UNIQUE (city_name, state_name, country_name),
     ON DELETE CASCADE
-    -- Referenced by Event
+    -- Referenced by Events
 );
 
 CREATE TABLE User_Current_Cities (
@@ -61,10 +62,11 @@ CREATE TABLE Messages (
 );
 
 CREATE TABLE Programs (
-    program_id INTEGER PRIMARY KEY, 
+    program_id INTEGER, 
     institution VARCHAR2(100) NOT NULL, 
     concentration VARCHAR2(100) NOT NULL, 
-    degree VARCHAR2(100) NOT NULL
+    degree VARCHAR2(100) NOT NULL,
+    PRIMARY KEY (program_id),
     UNIQUE (institution, concentration, degree)
 );
 

@@ -3,10 +3,11 @@ File for everything we need to do
 Part 1
 - event_id needs to be underlined ✅
 - add tags ✅
+- add education ✅
 
 Part 2 
-- Add friends trigger to friends table
-- Add drop tables
+- Add friends trigger to friends table 
+- Deal with circular dependencies
 - Check if all constraints match 
-- Add tags
-- Check if tags subject_id is just user_id
+- Check if tags subject_id is just user_id (this is a semantic thing)
+- Add SEQUENCES which serve as an AUTOINCREMENT in ORACLE
