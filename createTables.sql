@@ -40,14 +40,14 @@ CREATE TABLE Cities (
     UNIQUE (city_name, state_name, country_name)
 );
 
-CREATE SEQUENCE cities_sequence_count
+CREATE SEQUENCE cities_sequence
     START WITH 1
     INCREMENT BY 1;
 CREATE TRIGGER cities_trigger
     BEFORE INSERT ON Cities
     FOR EACH ROW
         BEGIN
-            SELECT cities_sequence_count.NEXTVAL INTO :NEW.city_id FROM DUAL;
+            SELECT cities_sequence.NEXTVAL INTO :NEW.city_id FROM DUAL;
         END;
 /
 
@@ -90,14 +90,14 @@ CREATE TABLE Programs (
     UNIQUE (institution, concentration, degree)
 );
 
-CREATE SEQUENCE programs_sequence_count
+CREATE SEQUENCE programs_sequence
     START WITH 1
     INCREMENT BY 1;
 CREATE TRIGGER programs_trigger
     BEFORE INSERT ON Programs
     FOR EACH ROW
         BEGIN
-            SELECT programs_sequence_count.NEXTVAL INTO :NEW.program_id FROM DUAL;
+            SELECT programs_sequence.NEXTVAL INTO :NEW.program_id FROM DUAL;
         END;
 /
 

@@ -39,6 +39,3 @@ DROP TABLE Users;
 
 DROP SEQUENCE programs_sequence;
 DROP SEQUENCE cities_sequence;
-
-DROP SEQUENCE programs_sequence_count;
-DROP SEQUENCE cities_sequence_count;
