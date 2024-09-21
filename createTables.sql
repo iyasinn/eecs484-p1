@@ -22,6 +22,18 @@ CREATE TABLE Friends (
     FOREIGN KEY (user2_id) REFERENCES Users(user_id)
 );
 
+CREATE TRIGGER Order_Friend_Pairs
+    BEFORE INSERT ON Friends
+    FOR EACH ROW
+        DECLARE temp INTEGER;
+        BEGIN
+            IF :NEW.user1_id > :NEW.user2_id THEN
+                temp := :NEW.user2_id;
+                :NEW.user2_id := :NEW.user1_id;
+                :NEW.user1_id := temp;
+            END IF;
+        END;
+/
 
 CREATE TABLE Cities (
     city_id INTEGER,
@@ -67,16 +79,19 @@ CREATE TABLE Programs (
     concentration VARCHAR2(100) NOT NULL, 
     degree VARCHAR2(100) NOT NULL,
     PRIMARY KEY (program_id),
-    UNIQUE (institution, concentration, degree)
+    UNIQUE (institution, concentration, degree),
+    ON DELETE CASCADE
+    -- Program is referenced by Education
 );
 
 CREATE TABLE Education (
     user_id INTEGER NOT NULL, 
     program_id INTEGER NOT NULL, 
     program_year INTEGER NOT NULL, 
-    PRIMARY KEY (user_id, program_id)
+    PRIMARY_KEY (user_id, program_id),
     FOREIGN KEY (user_id) REFERENCES Users(user_id)
     FOREIGN KEY (program_id) REFERENCES Programs(program_id)
+    -- Does anything reference Eduation? 
 );
 
 CREATE TABLE User_Events (

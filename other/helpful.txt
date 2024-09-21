@@ -23,3 +23,6 @@ Werak entity contains the relation
 And ON DLEETE CASCADE The parent
 
 Arrow means we have a one way weak dependency
+
+
+When something doesnt have to participate you can make the thing part of its relation
