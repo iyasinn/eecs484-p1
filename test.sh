@@ -10,7 +10,7 @@ DROP_SQL_FILE="dropTables.sql"  # Added for drop tables
 # Check for command line arguments
 if [ "$1" == "-c" ]; then
     # Remove the existing database file if it exists
-    rm -f "$DB_FILE"
+    # rm -f "$DB_FILE"
 
     # Create a new database and execute the SQL commands
     sqlite3 "$DB_FILE" < "$SQL_FILE"
