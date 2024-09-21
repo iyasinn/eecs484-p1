@@ -2,6 +2,7 @@ File for everything we need to do
 
 Part 1
 - event_id needs to be underlined
+- add tags
 
 Part 2 
 - Add friends trigger to friends table
