@@ -40,7 +40,7 @@ CREATE TABLE Cities (
     UNIQUE (city_name, state_name, country_name)
 );
 
-CREATE SEQUENCE cities_sequence
+CREATE SEQUENCE cities_sequence_count
     START WITH 1
     INCREMENT BY 1;
 CREATE TRIGGER cities_trigger
@@ -90,7 +90,7 @@ CREATE TABLE Programs (
     UNIQUE (institution, concentration, degree)
 );
 
-CREATE SEQUENCE programs_sequence
+CREATE SEQUENCE programs_sequence_count
     START WITH 1
     INCREMENT BY 1;
 CREATE TRIGGER programs_trigger
