@@ -3,3 +3,23 @@ If you want to test:
 chmod +x test.sh
 create tables: ./test.sh -c
 drop tables: ./test.sh -d
+
+
+ON DELETE CASCADE - Deletes all entites that reference my entity
+
+ON UPDATE SET NULL - Sets every FK that references this as null 
+    But what if the FK is not null? 
+
+DELETE INSERT UPDATE in SQL
+
+
+ATLER TRABLE <SOMETHING> 
+
+
+When forced to constrain, make it UNIQUE or make it a primary key
+
+Weak entity: One of them has to map to another 
+Werak entity contains the relation 
+And ON DLEETE CASCADE The parent
+
+Arrow means we have a one way weak dependency

@@ -1,12 +1,14 @@
 -- Create a table called 'users'
 CREATE TABLE Users (
-    user_id INTEGER PRIMARY KEY,
+    user_id INTEGER,
     first_name VARCHAR2(100) NOT NULL,
     last_name VARCHAR2(100) NOT NULL,
     year_of_birth INTEGER, 
     month_of_birth INTEGER,
     day_of_birth INTEGER, 
-    gender VARCHAR2(100)
+    gender VARCHAR2(100),
+    PRIMARY KEY (user_id), 
+    ON DELETE CASCADE
 );
 
 -- TODO: Need to add the Friends Trigger so that (a, b) and (b, a) can't be inserted
@@ -19,25 +21,31 @@ CREATE TABLE Friends (
     FOREIGN KEY (user2_id) REFERENCES Users(user_id)
 );
 
+
 CREATE TABLE Cities (
-    city_id INTEGER PRIMARY KEY,
+    city_id INTEGER,
     city_name VARCHAR2(100) NOT NULL, 
     state_name VARCHAR2(100) NOT NULL, 
     country_name VARCHAR2(100) NOT NULL
+    PRIMARY KEY(city_id),
+    UNIQUE (city_name, state_name, country_name),
+    ON DELETE CASCADE
+    -- Referenced by Event
 );
 
 CREATE TABLE User_Current_Cities (
     user_id INTEGER NOT NULL, 
     current_city_id INTEGER NOT NULL, 
-    PRIMARY KEY (user_id, current_city_id),
+    -- User can only have one current city
+    PRIMARY KEY (user_id),
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
-    FOREIGN KEY (current_city_id) REFERENCES Cities(city_id)
+    FOREIGN KEY (current_city_id) REFERENCES Cities(city_id),
 );
 
 CREATE TABLE User_Hometown_Cities (
     user_id INTEGER NOT NULL, 
     current_city_id INTEGER NOT NULL, 
-    PRIMARY KEY (user_id, current_city_id),
+    PRIMARY KEY (user_id),
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
     FOREIGN KEY (current_city_id) REFERENCES Cities(city_id)
 );
@@ -55,8 +63,9 @@ CREATE TABLE Messages (
 CREATE TABLE Programs (
     program_id INTEGER PRIMARY KEY, 
     institution VARCHAR2(100) NOT NULL, 
-    concentratio VARCHAR2(100) NOT NULL, 
+    concentration VARCHAR2(100) NOT NULL, 
     degree VARCHAR2(100) NOT NULL
+    UNIQUE (institution, concentration, degree)
 );
 
 CREATE TABLE Education (
@@ -65,7 +74,7 @@ CREATE TABLE Education (
     program_year INTEGER NOT NULL, 
     PRIMARY KEY (user_id, program_id)
     FOREIGN KEY (user_id) REFERENCES Users(user_id)
-    FOREIGN KEY (program_id) REFERENCES Programs(progam_id)
+    FOREIGN KEY (program_id) REFERENCES Programs(program_id)
 );
 
 CREATE TABLE User_Events (
