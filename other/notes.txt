@@ -1,0 +1,5 @@
+If you want to test: 
+
+chmod +x test.sh
+create tables: ./test.sh -c
+drop tables: ./test.sh -d
