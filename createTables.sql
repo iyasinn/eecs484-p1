@@ -160,16 +160,3 @@ CREATE TABLE Tags (
     FOREIGN KEY (tag_photo_id) REFERENCES Photos(photo_id) ON DELETE CASCADE,
     FOREIGN KEY (tag_subject_id) REFERENCES Users(user_id) ON DELETE CASCADE
 );
-
-CREATE TRIGGER Order_Friend_Pairs
-    BEFORE INSERT ON Friends
-    FOR EACH ROW
-        DECLARE temp INTEGER;
-        BEGIN
-            IF :NEW.user1_id > :NEW.user2_id THEN
-                temp := :NEW.user2_id;
-                :NEW.user2_id := :NEW.user1_id;
-                :NEW.user1_id := temp;
-            END IF;
-        END;
-/
