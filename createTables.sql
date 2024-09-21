@@ -47,7 +47,7 @@ CREATE TRIGGER cities_trigger
     BEFORE INSERT ON Cities
     FOR EACH ROW
         BEGIN
-            SELECT cities_sequence.NEXTVAL INTO :NEW.city_id FROM DUAL;
+            SELECT cities_sequence_count.NEXTVAL INTO :NEW.city_id FROM DUAL;
         END;
 /
 
@@ -97,7 +97,7 @@ CREATE TRIGGER programs_trigger
     BEFORE INSERT ON Programs
     FOR EACH ROW
         BEGIN
-            SELECT programs_sequence.NEXTVAL INTO :NEW.program_id FROM DUAL;
+            SELECT programs_sequence_count.NEXTVAL INTO :NEW.program_id FROM DUAL;
         END;
 /
 
