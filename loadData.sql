@@ -11,7 +11,7 @@
 -- INSERT INTO Users from Project1
 INSERT INTO Users (user_id, first_name, last_name, year_of_birth, month_of_birth, day_of_birth, gender)
 SELECT user_id, first_name, last_name, year_of_birth, month_of_birth, day_of_birth, gender
-FROM Project1;
+FROM project1.Public_User_Information;
 
 -- CREATE TABLE Friends 
 
