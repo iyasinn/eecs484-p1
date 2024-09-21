@@ -35,7 +35,7 @@ CREATE TABLE Cities (
     city_id INTEGER NOT NULL,
     city_name VARCHAR2(100) NOT NULL, 
     state_name VARCHAR2(100) NOT NULL, 
-    country_name VARCHAR2(100) NOT NULL
+    country_name VARCHAR2(100) NOT NULL,
     PRIMARY KEY(city_id),
     UNIQUE (city_name, state_name, country_name)
 );
@@ -83,7 +83,7 @@ CREATE TABLE Education (
     user_id INTEGER NOT NULL, 
     program_id INTEGER NOT NULL, 
     program_year INTEGER NOT NULL, 
-    PRIMARY_KEY (user_id, program_id),
+    PRIMARY KEY (user_id, program_id),
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
     FOREIGN KEY (program_id) REFERENCES Programs(program_id) ON DELETE CASCADE
 );

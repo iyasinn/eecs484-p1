@@ -1,0 +1,77 @@
+SQL> @createTables.sql
+
+Table created.
+
+
+Table created.
+
+
+Trigger created.
+
+    PRIMARY KEY(city_id),
+               *
+ERROR at line 6:
+ORA-00907: missing right parenthesis
+
+
+    FOREIGN KEY (current_city_id) REFERENCES Cities(city_id) ON DELETE CASCADE
+                                             *
+ERROR at line 6:
+ORA-00942: table or view does not exist
+
+
+    FOREIGN KEY (current_city_id) REFERENCES Cities(city_id) ON DELETE CASCADE
+                                             *
+ERROR at line 6:
+ORA-00942: table or view does not exist
+
+
+
+Table created.
+
+
+Table created.
+
+    PRIMARY_KEY (user_id, program_id),
+                *
+ERROR at line 5:
+ORA-00902: invalid datatype
+
+
+    FOREIGN KEY (event_city_id) REFERENCES Cities(city_id) ON DELETE CASCADE
+                                           *
+ERROR at line 16:
+ORA-00942: table or view does not exist
+
+
+    FOREIGN KEY (event_id) REFERENCES User_Events(event_id) ON DELETE CASCADE,
+                                      *
+ERROR at line 7:
+ORA-00942: table or view does not exist
+
+
+
+Table created.
+
+)
+*
+ERROR at line 8:
+ORA-00931: missing identifier
+
+
+    FOREIGN KEY (cover_photo_id) REFERENCES Photos(photo_id) ON DELETE CASCADE
+                                            *
+ERROR at line 3:
+ORA-00942: table or view does not exist
+
+
+ALTER TABLE Photos
+*
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+    FOREIGN KEY (tag_photo_id) REFERENCES Photos(photo_id) ON DELETE CASCADE,
+                                          *
+ERROR at line 8:
+ORA-00942: table or view does not exist
