@@ -17,7 +17,7 @@ INSERT INTO Cities(city_name, state_name, country_name)
 SELECT DISTINCT 
     current_city AS city_name, 
     current_state AS state_name, 
-    currenty_country AS country_name
+    current_country AS country_name
 FROM project1.Public_User_Information
 UNION ALL
 SELECT DISTINCT 
@@ -34,7 +34,7 @@ SELECT DISTINCT
      FROM Cities 
      WHERE city_name = current_city 
        AND state_name = current_state 
-       AND country_name = currenty_country) AS current_city_id
+       AND country_name = current_country) AS current_city_id
 FROM project1.Public_User_Information;
 
 INSERT INTO User_Hometown_Cities(user_id, hometown_city_id)
