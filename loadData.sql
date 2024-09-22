@@ -13,23 +13,41 @@ FROM project1.Public_Are_Friends;
 
 -- CREATE TABLE Cities
 
+INSERT INTO Cities(city_name, state_name, country_name)
+SELECT DISTINCT 
+    current_city AS city_name, 
+    current_state AS state_name, 
+    currenty_country AS country_name
+FROM project1.Public_User_Information;
 
--- CREATE TABLE Cities (
---     city_id INTEGER NOT NULL,
---     city_name VARCHAR2(100) NOT NULL, 
---     state_name VARCHAR2(100) NOT NULL, 
---     country_name VARCHAR2(100) NOT NULL,
---     PRIMARY KEY(city_id),
---     UNIQUE (city_name, state_name, country_name)
--- );
+INSERT INTO User_Current_Cities()
+SELECT DISTINCT 
+    user_id, 
+    (SELECT city_id 
+     FROM Cities 
+     WHERE city_name = current_city 
+       AND state_name = current_state 
+       AND country_name = currenty_country) AS current_city_id
+FROM project1.Public_User_Information;
+
 -- CREATE TABLE User_Current_Cities 
 
--- CREATE TABLE User_Hometown_Cities 
+-- CREATE TABLE User_Current_Cities (
+--     user_id INTEGER NOT NULL, 
+--     current_city_id INTEGER NOT NULL, 
+--     PRIMARY KEY (user_id),
+--     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
+--     FOREIGN KEY (current_city_id) REFERENCES Cities(city_id) ON DELETE CASCADE
+-- );
 
-
-
-
-
+-- -- User has one hometown city
+-- CREATE TABLE User_Hometown_Cities (
+--     user_id INTEGER NOT NULL, 
+--     current_city_id INTEGER NOT NULL, 
+--     PRIMARY KEY (user_id),
+--     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
+--     FOREIGN KEY (current_city_id) REFERENCES Cities(city_id) ON DELETE CASCADE
+-- );
 
 
 
