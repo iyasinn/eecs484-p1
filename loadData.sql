@@ -18,7 +18,14 @@ SELECT DISTINCT
     current_city AS city_name, 
     current_state AS state_name, 
     currenty_country AS country_name
-FROM project1.Public_User_Information;
+FROM project1.Public_User_Information
+UNION ALL
+SELECT DISTINCT 
+    hometown_city AS city_name, 
+    hometown_state AS state_name, 
+    hometown_city AS country_name
+FROM project1.Public_User_Information
+
 
 INSERT INTO User_Current_Cities()
 SELECT DISTINCT 
@@ -30,27 +37,15 @@ SELECT DISTINCT
        AND country_name = currenty_country) AS current_city_id
 FROM project1.Public_User_Information;
 
--- CREATE TABLE User_Current_Cities 
-
--- CREATE TABLE User_Current_Cities (
---     user_id INTEGER NOT NULL, 
---     current_city_id INTEGER NOT NULL, 
---     PRIMARY KEY (user_id),
---     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
---     FOREIGN KEY (current_city_id) REFERENCES Cities(city_id) ON DELETE CASCADE
--- );
-
--- -- User has one hometown city
--- CREATE TABLE User_Hometown_Cities (
---     user_id INTEGER NOT NULL, 
---     current_city_id INTEGER NOT NULL, 
---     PRIMARY KEY (user_id),
---     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
---     FOREIGN KEY (current_city_id) REFERENCES Cities(city_id) ON DELETE CASCADE
--- );
-
-
-
+INSERT INTO User_Hometown_Cities()
+SELECT DISTINCT 
+    user_id, 
+    (SELECT city_id 
+     FROM Cities 
+     WHERE city_name = hometown_city
+       AND state_name = hometown_state
+       AND country_name = hometown_country) AS hometown_city_id
+FROM project1.Public_User_Information;
 
 
 -- CREATE TABLE Programs
