@@ -30,12 +30,12 @@ FROM project1.Public_User_Information
 INSERT INTO User_Current_Cities(user_id, current_city_id)
 SELECT DISTINCT 
     user_id, 
-    (SELECT city_id 
+    (SELECT * 
      FROM Cities 
      WHERE city_name = current_city 
        AND state_name = current_state 
-       AND country_name = current_country) AS current_city_id
-FROM project1.Public_User_Information WHERE city_id IS NOT NULL;
+       AND country_name = current_country) AS city
+FROM project1.Public_User_Information WHERE city.city_id IS NOT NULL;
 
 INSERT INTO User_Hometown_Cities(user_id, hometown_city_id)
 SELECT DISTINCT 
