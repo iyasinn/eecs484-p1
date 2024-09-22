@@ -61,7 +61,7 @@ FROM
 INSERT INTO Programs (institution, concentration, degree)
     SELECT DISTINCT institution_name AS institution, program_concentration AS concentration, program_degree AS degree
 FROM project1.Public_User_Information
-WHERE institution IS NOT NULL;
+WHERE institution_name IS NOT NULL;
 
 -- CREATE TABLE Programs (
 --     program_id INTEGER, 
