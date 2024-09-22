@@ -51,17 +51,26 @@ FROM
 -- SELECT DISTINCT 
 --     user_id, 
 --     (SELECT city_id 
---      FROM Cities 
+--      FROM Cities
 --      WHERE city_name = hometown_city
 --        AND state_name = hometown_state
 --        AND country_name = hometown_country) AS hometown_city_id
 -- FROM project1.Public_User_Information WHERE city_id IS NOT NULL;
 
-
 -- CREATE TABLE Programs
-INSERT INTO Programs (instruction, concentration, degree)
-SELECT DISTINCT institution_name, program_concentration, program_degree
-FROM project1.Public_User_Information;
+INSERT INTO Programs (institution, concentration, degree)
+    SELECT DISTINCT institution_name AS institution, program_concentration AS concentration, program_degree AS degree
+FROM project1.Public_User_Information
+WHERE institution IS NOT NULL;
+
+-- CREATE TABLE Programs (
+--     program_id INTEGER, 
+--     institution VARCHAR2(100) NOT NULL, 
+--     concentration VARCHAR2(100) NOT NULL, 
+--     degree VARCHAR2(100) NOT NULL,
+--     PRIMARY KEY (program_id),
+--     UNIQUE (institution, concentration, degree)
+-- );
 
 
 -- CREATE TABLE Education 
