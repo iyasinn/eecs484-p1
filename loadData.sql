@@ -17,7 +17,7 @@ SELECT DISTINCT
     current_state AS state_name, 
     current_country AS country_name
 FROM project1.Public_User_Information
-UNION ALL
+UNION
 SELECT DISTINCT 
     hometown_city AS city_name, 
     hometown_state AS state_name, 
@@ -34,7 +34,8 @@ FROM
     JOIN Cities c ON pui.current_city = c.city_name 
                   AND pui.current_state = c.state_name 
                   AND pui.current_country = c.country_name 
-                  
+
+
 INSERT INTO User_Hometown_Cities(user_id, hometwon_city_id)
 SELECT DISTINCT 
     pui.user_id, 
