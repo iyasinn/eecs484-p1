@@ -35,7 +35,7 @@ SELECT DISTINCT
      WHERE city_name = current_city 
        AND state_name = current_state 
        AND country_name = current_country) AS current_city_id
-FROM project1.Public_User_Information;
+FROM project1.Public_User_Information WHERE city_id IS NOT NULL;
 
 INSERT INTO User_Hometown_Cities(user_id, hometown_city_id)
 SELECT DISTINCT 
@@ -45,7 +45,7 @@ SELECT DISTINCT
      WHERE city_name = hometown_city
        AND state_name = hometown_state
        AND country_name = hometown_country) AS hometown_city_id
-FROM project1.Public_User_Information;
+FROM project1.Public_User_Information WHERE city_id IS NOT NULL;
 
 
 -- CREATE TABLE Programs
