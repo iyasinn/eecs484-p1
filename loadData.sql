@@ -63,15 +63,6 @@ INSERT INTO Programs (institution, concentration, degree)
 FROM project1.Public_User_Information
 WHERE institution_name IS NOT NULL;
 
--- CREATE TABLE Programs (
---     program_id INTEGER, 
---     institution VARCHAR2(100) NOT NULL, 
---     concentration VARCHAR2(100) NOT NULL, 
---     degree VARCHAR2(100) NOT NULL,
---     PRIMARY KEY (program_id),
---     UNIQUE (institution, concentration, degree)
--- );
-
 
 -- CREATE TABLE Education 
 INSERT INTO Education (user_id, program_id, program_year)
@@ -99,7 +90,7 @@ SELECT DISTINCT
     pub.event_type, 
     pub.event_subtype, 
     pub.event_address, 
-    c.event_city_id, 
+    c.city_id AS event_city_id, 
     pub.event_start_time, 
     pub.event_end_time
 FROM project1.Public_Event_Information pub
