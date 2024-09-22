@@ -4,11 +4,12 @@ INSERT INTO Users (user_id, first_name, last_name, year_of_birth, month_of_birth
 SELECT DISTINCT user_id, first_name, last_name, year_of_birth, month_of_birth, day_of_birth, gender
 FROM project1.Public_User_Information;
 
--- CREATE TABLE Friends 
 
+-- CREATE TABLE Friends 
 INSERT INTO Friends(user1_id, user2_id)
 SELECT DISTINCT LEAST(user1_id, user2_id) AS user1_id, GREATEST(user1_id, user2_id) AS user2_id
 FROM project1.Public_Are_Friends;
+
 
 -- CREATE TABLE Cities
 INSERT INTO Cities(city_name, state_name, country_name)
@@ -45,17 +46,6 @@ FROM
     JOIN Cities c ON pui.hometown_city = c.city_name
                   AND pui.hometown_state = c.state_name 
                   AND pui.hometown_country = c.country_name
-
-
--- INSERT INTO User_Hometown_Cities(user_id, hometown_city_id)
--- SELECT DISTINCT 
---     user_id, 
---     (SELECT city_id 
---      FROM Cities
---      WHERE city_name = hometown_city
---        AND state_name = hometown_state
---        AND country_name = hometown_country) AS hometown_city_id
--- FROM project1.Public_User_Information WHERE city_id IS NOT NULL;
 
 -- CREATE TABLE Programs
 INSERT INTO Programs (institution, concentration, degree)
