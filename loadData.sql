@@ -27,7 +27,7 @@ SELECT DISTINCT
 FROM project1.Public_User_Information
 
 
-INSERT INTO User_Current_Cities()
+INSERT INTO User_Current_Cities(user_id, city_id)
 SELECT DISTINCT 
     user_id, 
     (SELECT city_id 
@@ -37,7 +37,7 @@ SELECT DISTINCT
        AND country_name = currenty_country) AS current_city_id
 FROM project1.Public_User_Information;
 
-INSERT INTO User_Hometown_Cities()
+INSERT INTO User_Hometown_Cities(user_id, city_id)
 SELECT DISTINCT 
     user_id, 
     (SELECT city_id 
