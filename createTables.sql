@@ -40,6 +40,17 @@ CREATE TABLE Cities (
     UNIQUE (city_name, state_name, country_name)
 );
 
+CREATE SEQUENCE cities_sequence
+    START WITH 1
+    INCREMENT BY 1;
+CREATE TRIGGER cities_trigger
+    BEFORE INSERT ON Cities
+    FOR EACH ROW
+        BEGIN
+            SELECT cities_sequence.NEXTVAL INTO :NEW.city_id FROM DUAL;
+        END;
+/
+
 -- User has one current city
 CREATE TABLE User_Current_Cities (
     user_id INTEGER NOT NULL, 
@@ -52,10 +63,10 @@ CREATE TABLE User_Current_Cities (
 -- User has one hometown city
 CREATE TABLE User_Hometown_Cities (
     user_id INTEGER NOT NULL, 
-    current_city_id INTEGER NOT NULL, 
+    hometown_city_id INTEGER NOT NULL, 
     PRIMARY KEY (user_id),
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
-    FOREIGN KEY (current_city_id) REFERENCES Cities(city_id) ON DELETE CASCADE
+    FOREIGN KEY (hometown_city_id) REFERENCES Cities(city_id) ON DELETE CASCADE
 );
 
 -- Weak reference to Users
@@ -78,6 +89,17 @@ CREATE TABLE Programs (
     PRIMARY KEY (program_id),
     UNIQUE (institution, concentration, degree)
 );
+
+CREATE SEQUENCE programs_sequence
+    START WITH 1
+    INCREMENT BY 1;
+CREATE TRIGGER programs_trigger
+    BEFORE INSERT ON Programs
+    FOR EACH ROW
+        BEGIN
+            SELECT programs_sequence.NEXTVAL INTO :NEW.program_id FROM DUAL;
+        END;
+/
 
 CREATE TABLE Education (
     user_id INTEGER NOT NULL, 
