@@ -10,9 +10,7 @@ INSERT INTO Friends(user1_id, user2_id)
 SELECT DISTINCT LEAST(user1_id, user2_id) AS user1_id, GREATEST(user1_id, user2_id) AS user2_id
 FROM project1.Public_Are_Friends;
 
-
 -- CREATE TABLE Cities
-
 INSERT INTO Cities(city_name, state_name, country_name)
 SELECT DISTINCT 
     current_city AS city_name, 
@@ -23,29 +21,40 @@ UNION ALL
 SELECT DISTINCT 
     hometown_city AS city_name, 
     hometown_state AS state_name, 
-    hometown_city AS country_name
-FROM project1.Public_User_Information
+    hometown_country AS country_name
+FROM project1.Public_User_Information;
 
 
 INSERT INTO User_Current_Cities(user_id, current_city_id)
 SELECT DISTINCT 
-    user_id, 
-    (SELECT * 
-     FROM Cities 
-     WHERE city_name = current_city 
-       AND state_name = current_state 
-       AND country_name = current_country) AS city
-FROM project1.Public_User_Information WHERE city.city_id IS NOT NULL;
-
-INSERT INTO User_Hometown_Cities(user_id, hometown_city_id)
+    pui.user_id, 
+    c.city_id 
+FROM 
+    project1.Public_User_Information pui
+    JOIN Cities c ON pui.current_city = c.city_name 
+                  AND pui.current_state = c.state_name 
+                  AND pui.current_country = c.country_name 
+                  
+INSERT INTO User_Hometown_Cities(user_id, hometwon_city_id)
 SELECT DISTINCT 
-    user_id, 
-    (SELECT city_id 
-     FROM Cities 
-     WHERE city_name = hometown_city
-       AND state_name = hometown_state
-       AND country_name = hometown_country) AS hometown_city_id
-FROM project1.Public_User_Information WHERE city_id IS NOT NULL;
+    pui.user_id, 
+    c.city_id
+FROM 
+    project1.Public_User_Information pui 
+    JOIN Cities c ON pui.hometown_city = c.city_name
+                  AND pui.hometown_state = c.state_name 
+                  AND pui.hometown_country = c.country_name
+
+
+-- INSERT INTO User_Hometown_Cities(user_id, hometown_city_id)
+-- SELECT DISTINCT 
+--     user_id, 
+--     (SELECT city_id 
+--      FROM Cities 
+--      WHERE city_name = hometown_city
+--        AND state_name = hometown_state
+--        AND country_name = hometown_country) AS hometown_city_id
+-- FROM project1.Public_User_Information WHERE city_id IS NOT NULL;
 
 
 -- CREATE TABLE Programs
