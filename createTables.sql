@@ -63,10 +63,10 @@ CREATE TABLE User_Current_Cities (
 -- User has one hometown city
 CREATE TABLE User_Hometown_Cities (
     user_id INTEGER NOT NULL, 
-    current_city_id INTEGER NOT NULL, 
+    hometown_city_id INTEGER NOT NULL, 
     PRIMARY KEY (user_id),
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
-    FOREIGN KEY (current_city_id) REFERENCES Cities(city_id) ON DELETE CASCADE
+    FOREIGN KEY (hometown_city_id) REFERENCES Cities(city_id) ON DELETE CASCADE
 );
 
 -- Weak reference to Users
