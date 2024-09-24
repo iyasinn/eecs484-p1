@@ -15,11 +15,11 @@ Part 2
 
 Questions
 - Check if year should be on relation or program
-- Tag neesd to mention
+- Tag neesd to mention ✅
 - Weak entity clatification -> Single owner mean single relation or what if weak enetity to multiple
-relations
-- How to ensure at least one photo exists for an album
-- Do we need to do the ciruclar dpeneedncy
+relations 
+- How to ensure at least one photo exists for an album ✅
+- Do we need to do the ciruclar dpeneedncy ✅
 
 
 
